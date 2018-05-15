@@ -1,5 +1,10 @@
 package core_refactoring;
 
+/**
+ * 定义了组件名称的枚举
+ * @author 87663
+ *
+ */
 public enum Components {
 
 	DEALER,//发牌器

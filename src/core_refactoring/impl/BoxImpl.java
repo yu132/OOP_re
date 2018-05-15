@@ -33,7 +33,7 @@ public class BoxImpl implements Box{
 	private String getSnapshot(){
 		StringBuilder sb=new StringBuilder(cardStack.size()*10);
 		boolean f=true;
-		for(Card c:cardStack){
+		for(Card c:cardStack){//依次向字符串构造器中加入卡牌的信息
 			if(f){
 				f=false;
 				sb.append(c.toString());
@@ -45,101 +45,105 @@ public class BoxImpl implements Box{
 	
 	@Override
 	public MoveState sentSingleCard(Component c) {
-		if(cardStack.isEmpty())
+		if(cardStack.isEmpty())//如果空，则不可移动
 			return MoveState.ILLEGAL_MOVE;
 		
-		Card topCard=cardStack.peek();
-		MoveState ms=c.getSingleCard(topCard);
-		if(ms==MoveState.SUCCESS){
-			snapshot.push(getSnapshot());
-			cardStack.pop();
+		Card topCard=cardStack.peek();//看牌
+		MoveState ms=c.getSingleCard(topCard);//把牌送给另一个组件
+		
+		if(ms==MoveState.SUCCESS){//如果成功的话
+			snapshot.push(getSnapshot());//加入一个操作快照
+			cardStack.pop();//把牌拿走
 		}
 		
-		return ms;
+		return ms;//返回操作结果
 	}
 
 	@Override
 	public MoveState getSingleCard(Card card) {
-		if(cardStack.isEmpty()){
-			if(card.getCardNumber()==CardNumber.ACE){
-				snapshot.push(getSnapshot());
-				cardStack.push(card);
-				return MoveState.SUCCESS;
+		if(cardStack.isEmpty()){//如果是空的
+			if(card.getCardNumber()==CardNumber.ACE){//检查送来的牌是不是ACE
+				snapshot.push(getSnapshot());//是的话，拍快照
+				cardStack.push(card);//将牌加入
+				return MoveState.SUCCESS;//返回成功
 			}else
-				return MoveState.WRONG_COLLECTION;
+				return MoveState.WRONG_COLLECTION;//否则返回错误收集结果
 		}
 		
-		Card topCard=cardStack.peek();
-		if(topCard.isStackableInBox(card)){
-			snapshot.push(getSnapshot());
-			cardStack.push(card);
-			return MoveState.SUCCESS;
+		//如果不为空
+		Card topCard=cardStack.peek();//看顶部的牌
+		if(topCard.isStackableInBox(card)){//检查给的牌是否能够放上去
+			snapshot.push(getSnapshot());//如果可以的话，就拍一个快照
+			cardStack.push(card);//把牌加入
+			return MoveState.SUCCESS;//返回成功
 		}else
-			return MoveState.WRONG_COLLECTION;
+			return MoveState.WRONG_COLLECTION;//否则返回失败
 	}
 
 	@Override
-	public MoveState sentCards(Component c, int number) {
-		return MoveState.ILLEGAL_MOVE;
+	public MoveState sentCards(Component c, int number) {//这个组件不允许一次送走多张牌
+		if(number==1)//如果牌数量为一
+			return sentSingleCard(c);//则调用送一张的方法
+		return MoveState.ILLEGAL_MOVE;//否则返回非法操作
 	}
 
 	@Override
-	public MoveState getCards(ArrayList<Card> cards) {
-		return MoveState.ILLEGAL_MOVE;
+	public MoveState getCards(ArrayList<Card> cards) {//这个组件不允许一次得到多张牌
+		return MoveState.ILLEGAL_MOVE;//返回非法操作
 	}
 
 	@Override
-	public ArrayList<String> getTopCard() {
+	public ArrayList<String> getTopCard() {//获取顶部的牌
 		ArrayList<String> temp=new ArrayList<>();
-		if(!cardStack.isEmpty())
-			temp.add(cardStack.peek().toString());
-		return temp;
+		if(!cardStack.isEmpty())//如果非空
+			temp.add(cardStack.peek().toString());//则将顶部的牌放入数组总
+		return temp;//并返回这个数组
 	}
 
 	@Override
 	public ArrayList<String> getAllCard() {
 		ArrayList<String> temp=new ArrayList<>();
 		boolean f=true;
-		for(Card c:cardStack){
+		for(Card c:cardStack){//对于每张牌，都加入数组中
 			if(f){
 				f=false;
 				temp.add(c.toString());
 			}else
 				temp.add(" "+c.toString());
 		}
-		return temp;
+		return temp;//返回这个数组
 	}
 
 	@Override
 	public boolean ismovable(int index) {
-		return index==1;
+		return index==1;//如果是第一张就可以移动
 	}
 
 	@Override
 	public boolean undo() {
-		if(snapshot.isEmpty())
+		if(snapshot.isEmpty())//如果没有剩下的快照了，就不能撤销
 			return false;
 		
-		String last=snapshot.pop();
-		cardStack.clear();
+		String last=snapshot.pop();//取出最后一张快照
+		cardStack.clear();//清空牌
 		
-		if(!last.equals("")){
+		if(!last.equals("")){//将牌恢复成快照的样子
 			String[] cards=last.split(" ");
 			for(int i=0;i<cards.length;i++)
 				cardStack.push(CardImpl.valueOf(cards[cards.length-1-i]));
 		}
-		return true;
+		return true;//返回撤销成功
 	}
 
 	@Override
 	public boolean undoAll() {
-		if(snapshot.isEmpty())
+		if(snapshot.isEmpty())//如果没有剩下的快照了，就不能撤销
 			return false;
 		
-		cardStack.clear();
-		snapshot.clear();
+		cardStack.clear();//撤销回初始状态时，没有牌
+		snapshot.clear();//也没有快照
 		
-		return true;
+		return true;//返回成功
 	}
 
 }

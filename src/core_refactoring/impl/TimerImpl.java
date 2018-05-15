@@ -30,7 +30,7 @@ public class TimerImpl implements Timer{
 
 	@Override
 	public long getTime() {
-		return (System.currentTimeMillis()-startedTime)/1000;
+		return (System.currentTimeMillis()-startedTime)/1000;//返回已经开始的秒数
 	}
 
 }

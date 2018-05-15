@@ -17,6 +17,7 @@ public interface CardGameAnalyzer {
 	/**
 	 * 获取最顶上的提示
 	 * @return 最顶上的提示
+	 * @throws NoSuchElementException 当没有提示时
 	 */
 	String getBestTips();
 	
