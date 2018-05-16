@@ -7,6 +7,13 @@ import java.util.NoSuchElementException;
 
 import core_refactoring.*;
 
+/**
+ * 就是一个单步分析器的简化版
+ * 在这个版本中不进行NEXT分析
+ * 
+ * @author 87663
+ *
+ */
 public class SimpleSingleStepCardGameAnalyzerImpl implements CardGameAnalyzer{
 
 	private static Map<Integer,Components> map=new HashMap<>();
@@ -64,14 +71,10 @@ public class SimpleSingleStepCardGameAnalyzerImpl implements CardGameAnalyzer{
 			}
 		}
 		
-	//	System.out.println("#1");
-		
 		for(int i=1;i<=7;i++){
 			for(int j=1;j<=4;j++){
 				if(cardGame.moveCards(map.get(i), boxmap.get(j), 1)==MoveState.SUCCESS){
 					tips.add(map.get(i)+" "+boxmap.get(j)+" "+1);
-					
-				//	System.out.println("Analyzer:"+map.get(i)+" "+boxmap.get(j)+" "+1);
 					
 					cardGame.undo();
 					if(fastMode){
@@ -80,8 +83,6 @@ public class SimpleSingleStepCardGameAnalyzerImpl implements CardGameAnalyzer{
 				}
 			}
 		}
-		
-	//	System.out.println("#2");
 		
 		String[] sp=cardGame.lastMove().split(" ");
 		
@@ -108,8 +109,6 @@ public class SimpleSingleStepCardGameAnalyzerImpl implements CardGameAnalyzer{
 					if(cardGame.moveCards(map.get(i), map.get(j), num)==MoveState.SUCCESS){
 						tips.add(map.get(i)+" "+map.get(j)+" "+num);
 						
-					//	System.out.println("Analyzer:"+map.get(i)+" "+map.get(j)+" "+num);
-						
 						cardGame.undo();
 						if(fastMode){
 							return;
@@ -123,23 +122,20 @@ public class SimpleSingleStepCardGameAnalyzerImpl implements CardGameAnalyzer{
 			if(cardGame.moveCards(Components.DEALER, map.get(j), 1)==MoveState.SUCCESS){
 				tips.add(Components.DEALER+" "+map.get(j)+" "+1+" "+0);
 				
-			//	System.out.println("Analyzer:"+Components.DEALER+" "+map.get(j)+" "+1);
-				
 				cardGame.undo();
+				
+				if(fastMode){
+					return;
+				}
 			}
 		}
 		for(int j=1;j<=4;j++){
 			if(cardGame.moveCards(Components.DEALER, boxmap.get(j), 1)==MoveState.SUCCESS){
 				tips.add(Components.DEALER+" "+boxmap.get(j)+" "+1+" "+0);
 				
-			//	System.out.println("Analyzer:"+Components.DEALER+" "+boxmap.get(j)+" "+1);
-				
 				cardGame.undo();
 			}
 		}
-		
-	//	System.out.println("#3");
-		
 		
 	}
 
