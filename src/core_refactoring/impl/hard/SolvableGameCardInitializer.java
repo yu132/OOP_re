@@ -529,7 +529,7 @@ public class SolvableGameCardInitializer implements CardInitializer {
 
 						Collections.sort(slist);// 按明牌数量进行逆向排序
 
-						boolean faliure = true;//处理失败的标记，如果失败了，则是真的卡死了，只能重新生成游戏了
+						boolean faliure = true;// 处理失败的标记，如果失败了，则是真的卡死了，只能重新生成游戏了
 
 						for (int x = 0; x < 6; x++) {
 							h1 = slist.get(x).index;// 优先处理牌多的
@@ -542,11 +542,11 @@ public class SolvableGameCardInitializer implements CardInitializer {
 
 							h2 = 0;// 把多的牌全移动到牌堆1，来进行周转
 							if (fromHeaptoHeap(CardHeap, coverNumber, h1, h2, CardHeap[h1].size() - coverNumber[h1] - 1,
-									mvlist)) {//模拟移动
+									mvlist)) {// 模拟移动
 
-								faliure = false;//如果移动成功了，则没有失败
+								faliure = false;// 如果移动成功了，则没有失败
 
-								coverHeapCard(CardHeap, coverNumber, h1);//把来源的牌盖上
+								coverHeapCard(CardHeap, coverNumber, h1);// 把来源的牌盖上
 
 								// 重算状态数组的值
 								togive[h1] = CardHeap[h1].size() - coverNumber[h1];
@@ -564,22 +564,22 @@ public class SolvableGameCardInitializer implements CardInitializer {
 
 						}
 
-						if (faliure)//如果卡死了，就返回失败，这个牌堆无法整理，或者整理的时候遇到了无法解决的卡死问题
-										//这个时候就需要重新生成牌局
-							return false;//返回失败
+						if (faliure)// 如果卡死了，就返回失败，这个牌堆无法整理，或者整理的时候遇到了无法解决的卡死问题
+									// 这个时候就需要重新生成牌局
+							return false;// 返回失败
 					}
 				} else {// 如果没卡死
 					kasi = true;// 把卡死设置成默认值
 				}
 
 			}
-			
-			return true;//如果成功整理，就返回成功
-			
+
+			return true;// 如果成功整理，就返回成功
+
 		}
 
 		/**
-		 * 整理发牌器，其实就是在发牌器中找位置放新的卡，一轮一轮做，直到做完为之
+		 * 整理发牌器，其实就是在发牌器中找位置放新的卡，一轮一轮做，直到做完为之（发牌器中抽空）
 		 * 
 		 * @param tempDealer
 		 *            表示发牌器
@@ -592,12 +592,12 @@ public class SolvableGameCardInitializer implements CardInitializer {
 		 */
 		private static int[] organizeDealer(Card[][] tempDealer, int[] togiveNum, int allDealerNum) {
 
-			int[] ret = new int[2];//表示两个返回值
+			int[] ret = new int[2];// 表示两个返回值
 
-			int x = 0;//计算有几个位置是有牌的
-			int group = 0;//表示组的数量
+			int x = 0;// 计算有几个位置是有牌的
+			int group = 0;// 表示组的数量
 
-			//计算有牌位置的数量
+			// 计算有牌位置的数量
 			l: for (int i = 1; i <= 8; i++) {
 				group = i;
 				for (int j = 0; j < 3; j++) {
@@ -608,34 +608,34 @@ public class SolvableGameCardInitializer implements CardInitializer {
 				}
 			}
 
-			int temp1 = r.nextInt(1050) + 1;//随机数，用于下面抽取
+			int temp1 = r.nextInt(1050) + 1;// 随机数，用于下面抽取
 
-			int groupNext;//下一次组的数量
-			int addGroup;//添加组的数量
+			int groupNext;// 下一次组的数量
+			int addGroup;// 添加组的数量
 
-			//根据随机数抽取下一组的添加组的数量
+			// 根据随机数抽取下一组的添加组的数量
 			if (temp1 < 300)
 				addGroup = 0;
-			
+
 			else if (temp1 < 700)
 				addGroup = 1;
-			
+
 			else if (temp1 < 990)
 				addGroup = 2;
-			
+
 			else if (temp1 < 995)
 				addGroup = 3;
-			
+
 			else if (temp1 < 997)
 				addGroup = 4;
-			
+
 			else if (temp1 < 998)
 				addGroup = 5;
-			
+
 			else if (temp1 < 999)
 				addGroup = 6;
-			
-			else {//表示这次发牌器中不添加牌，继续进行牌堆移动
+
+			else {// 表示这次发牌器中不添加牌，继续进行牌堆移动
 				for (int i = 0; i < togiveNum.length; i++)
 					togiveNum[i] = 0;
 
@@ -645,24 +645,24 @@ public class SolvableGameCardInitializer implements CardInitializer {
 				return ret;
 			}
 
-			//如果添加的组数过多
+			// 如果添加的组数过多
 			if (group + addGroup >= 8)
-				groupNext = 8;//就把组数设成上限
+				groupNext = 8;// 就把组数设成上限
 			else
-				groupNext = group + addGroup;//否则就是直接加
+				groupNext = group + addGroup;// 否则就是直接加
 
-			int nextCardNumber = (groupNext - 1) * 3 + r.nextInt(3) + 1;//计算需要多少张牌
+			int nextCardNumber = (groupNext - 1) * 3 + r.nextInt(3) + 1;// 计算需要多少张牌
 
-			if (nextCardNumber > 24)//如果下一次的牌过多
-				nextCardNumber = 24;//设为上限
+			if (nextCardNumber > 24)// 如果下一次的牌过多
+				nextCardNumber = 24;// 设为上限
 
-			if (nextCardNumber <= x) {//如果算完牌的数量还少了
-				if (r.nextBoolean()) {//50%设成多1张
+			if (nextCardNumber <= x) {// 如果算完牌的数量还少了
+				if (r.nextBoolean()) {// 50%设成多1张
 					nextCardNumber = x + 1;
 				} else {
-					if (r.nextBoolean()) {//25%设成多两张
+					if (r.nextBoolean()) {// 25%设成多两张
 						nextCardNumber = x + 2;
-					} else {//25%直接返回不做操作
+					} else {// 25%直接返回不做操作
 						for (int i = 0; i < togiveNum.length; i++)
 							togiveNum[i] = 0;
 
@@ -674,16 +674,16 @@ public class SolvableGameCardInitializer implements CardInitializer {
 				}
 			}
 
-			int orgNum = nextCardNumber - x;//新加的牌
+			int orgNum = nextCardNumber - x;// 新加的牌
 
-			int xx = ((nextCardNumber - 1) / 3 + 1);//重新算的组的数量，因为上面可能会有加牌，可能会多出一组来
-			
-			if (xx < 8)//计算出来的组，如果过多了，则设成上限
+			int xx = ((nextCardNumber - 1) / 3 + 1);// 重新算的组的数量，因为上面可能会有加牌，可能会多出一组来
+
+			if (xx < 8)// 计算出来的组，如果过多了，则设成上限
 				groupNext = xx;
 			else
 				groupNext = 8;
 
-			//重算发牌器所需要的牌
+			// 重算发牌器所需要的牌
 			if (allDealerNum - orgNum >= 0)
 				allDealerNum -= orgNum;
 			else {
@@ -691,61 +691,62 @@ public class SolvableGameCardInitializer implements CardInitializer {
 				allDealerNum = 0;
 			}
 
-			int leave = nextCardNumber - (groupNext - 1) * 3;
+			int leave = nextCardNumber - (groupNext - 1) * 3;// 最后一组最大的容量空间
 
-			//对前面的组进行整理，除了最后一组
+			// 对前面的组进行整理，除了最后一组
 			if (groupNext - 2 >= 0) {
-				RandomUniqueNumber ru = new RandomUniqueNumber(0, groupNext - 2);//抽取前面除了最后一组的组
+				RandomUniqueNumber ru = new RandomUniqueNumber(0, groupNext - 2);// 抽取前面除了最后一组的组
 
-				while (true) {
-					ru.reSet();
+				while (true) {// 整理直到完成
+					ru.reSet();// 重置
 
+					// 表示一次整理，但是一次整理可能完不成
 					for (int i = 0; i < groupNext - 1; i++) {
 
-						int g = ru.getNum();
+						int g = ru.getNum();// 随机选取抽取顺序
 
-						int next = r.nextInt(orgNum + 1 > 4 ? 4 : orgNum + 1);
+						int next = r.nextInt(orgNum + 1 > 4 ? 4 : orgNum + 1);// 抽下一次的这一组新加的牌的数量
 
-						if (next > orgNum) {
+						if (next > orgNum) {// 如果抽的数量多了，就减少
 							next = orgNum;
 						}
 
-						if (togiveNum[g] + next > 3) {
+						if (togiveNum[g] + next > 3) {// 如果要给的牌牌大于这一组的容纳量，就补充到最大
 							orgNum = orgNum + togiveNum[g] - 3;
 							togiveNum[g] = 3;
-						} else {
+						} else {// 如果没到最大容纳量，就直接相加就可以了
 							orgNum -= next;
 							togiveNum[g] += next;
 						}
 
 					}
 
-					if (orgNum <= leave) {
-						if (r.nextBoolean())
+					if (orgNum <= leave) {// 如果剩下的牌能全给最后一组
+						if (r.nextBoolean())// 50%的概率不再给前面的组
 							break;
 					}
 				}
-				
+
 			}
-			togiveNum[groupNext - 1] = orgNum;
+			togiveNum[groupNext - 1] = orgNum;// 最后一组新得的牌就是剩下的牌
 
-			Card[][] tempDealerNew = new Card[8][3];
+			Card[][] tempDealerNew = new Card[8][3];// 重组发牌器
 
-			int inxde1 = 0;
-			int indexIn = 0;
+			int inxde1 = 0;// 表示旧发牌器的组的索引
+			int indexIn = 0;// 表示旧发牌器的组内索引
 
-			//对最后一组进行特殊的处理
-			for (int i = 0; i < groupNext - 1; i++) {
-				for (int j = 0; j < 3 - togiveNum[i]; j++) {
-					if (indexIn == 3) {
+			for (int i = 0; i < groupNext - 1; i++) {// 表示新的发牌器的组
+				for (int j = 0; j < 3 - togiveNum[i]; j++) {// 表示新的发牌器的组内的牌
+					if (indexIn == 3) {// 旧发牌器的组内索引到了3，就移动到下一组
 						indexIn = 0;
 						inxde1++;
 					}
-					tempDealerNew[i][j] = tempDealer[inxde1][indexIn++];
-					x--;
+					tempDealerNew[i][j] = tempDealer[inxde1][indexIn++];// 把旧发牌器的牌按上面的空间移动新的发牌器中
+					x--;// 剩下的牌减一
 				}
 			}
 
+			// 最后一组做特殊处理
 			for (int i = 0; i < x; i++) {
 				if (indexIn == 3) {
 					indexIn = 0;
@@ -754,68 +755,84 @@ public class SolvableGameCardInitializer implements CardInitializer {
 				tempDealerNew[groupNext - 1][i] = tempDealer[inxde1][indexIn++];
 			}
 
-			ret[0] = allDealerNum;
-			ret[1] = groupNext - 1;
+			ret[0] = allDealerNum;// 返回值赋值
+			ret[1] = groupNext - 1;// 返回值赋值
 
+			// 把新发牌器中重新整理好的牌的顺序重新写回旧的对象中
 			for (int i = 0; i < 8; i++)
 				for (int j = 0; j < 3; j++)
 					tempDealer[i][j] = tempDealerNew[i][j];
 
-			return ret;
-
+			return ret;// 返回返回值
 		}
 
+		/**
+		 * 获取一个可解游戏
+		 * 
+		 * @return 一个可解游戏
+		 */
 		private static SolvableCardGame getASolvableCardGamePro() {
 
-			ArrayList<Operation> mvlist = new ArrayList<>();
+			ArrayList<Operation> mvlist = new ArrayList<>();//一个存储移动顺序的数组
 
 			@SuppressWarnings("unchecked")
-			ArrayList<Card>[] CardHeap = new ArrayList[7];
+			ArrayList<Card>[] CardHeap = new ArrayList[7];//表示7个牌堆
 
-			int[] coverNumber = new int[7];
+			int[] coverNumber = new int[7];//盖住的牌的计数数组
 
+			//初始化牌堆
 			for (int i = 0; i < 7; i++) {
 				CardHeap[i] = new ArrayList<>();
 			}
 
-			int allDealerNum = 24;
+			int allDealerNum = 24;//发牌器需要的牌数
 
-			RandomUniqueNumber ruH1 = new RandomUniqueNumber(1, 6);
-			RandomUniqueNumber ruH2 = new RandomUniqueNumber(1, 6);
+			RandomUniqueNumber ruH1 = new RandomUniqueNumber(1, 6);//后六个牌堆
+			RandomUniqueNumber ruH2 = new RandomUniqueNumber(1, 6);//后六个牌堆
 
-			Card[][] tempDealer = new Card[8][3];
+			Card[][] tempDealer = new Card[8][3];//表示发牌器
 
-			int[] togiveNum = new int[8];
+			int[] togiveNum = new int[8];//表示每次发牌器每组要获得的牌
 
-			initHeap(CardHeap);
+			initHeap(CardHeap);//初始化牌堆
 
-			while (allDealerNum != 0) {
+			while (allDealerNum != 0) {//给发牌器牌直到24张发够
 
-				int[] ret = organizeDealer(tempDealer, togiveNum, allDealerNum);
+				int[] ret = organizeDealer(tempDealer, togiveNum, allDealerNum);//先腾出空间用于放牌
 
-				allDealerNum = ret[0];
+				allDealerNum = ret[0];//更新需要牌的数量
 
-				for (int i = 7; i >= 0; i--) {
+				for (int i = 7; i >= 0; i--) {//发牌器是从后向前给牌
 
-					int tt = togiveNum[i];
-					for (int j = 0; j < tt; j++) {
+					int tt = togiveNum[i];//这组需要的牌的数量
+					for (int j = 0; j < tt; j++) {//给需要数量的牌
 
 						int temp = 0;
-						while (temp < 50) {
-							int temp2 = r.nextInt(100);
-							if (temp2 < 40) {
-								ruH1.reSet();
+						
+						while (temp < 50) {//做完第一次之后有50%概率跳出
+							int temp2 = r.nextInt(100);//随机数
+							
+							if (temp2 < 40) {//40%概率，移动可移动的全部牌
+								
+								ruH1.reSet();//重置来源牌堆
 								l: for (int x = 1; x <= 6; x++) {
-									int h1 = ruH1.getNum();
-									ruH2.reSet();
+									
+									int h1 = ruH1.getNum();//随机抽取来源牌堆
+									
+									ruH2.reSet();//重置目标牌堆
 									for (int y = 1; y <= 6; y++) {
-										int h2 = ruH2.getNum();
-										if (h1 == h2)
+										
+										int h2 = ruH2.getNum();//随机抽取目标牌堆
+										
+										if (h1 == h2)//如果来源和目标相同，就跳过
 											continue;
 
-										int num = CardHeap[h1].size() - coverNumber[h1] - 1;
-										if (isHeapCoverableMax(CardHeap, coverNumber, h1)
+										int num = CardHeap[h1].size() - coverNumber[h1] - 1;//移动可移动的全部牌
+										
+										if (isHeapCoverableMax(CardHeap, coverNumber, h1)//检查是否移动成功
 												&& fromHeaptoHeap(CardHeap, coverNumber, h1, h2, num, mvlist)) {
+											
+											//两者移动完都可能只剩一张牌，能盖住就盖住
 											coverHeapCard(CardHeap, coverNumber, h1);
 											coverHeapCard(CardHeap, coverNumber, h1);
 
@@ -823,17 +840,25 @@ public class SolvableGameCardInitializer implements CardInitializer {
 										}
 									}
 								}
-							} else if (temp2 < 80) {
+								
+							} else if (temp2 < 80) {//40%概率，只移动一张牌，逻辑与上面大体相同
+								
 								ruH1.reSet();
 								l: for (int x = 1; x <= 6; x++) {
+									
 									int h1 = ruH1.getNum();
+									
 									ruH2.reSet();
 									for (int y = 1; y <= 6; y++) {
+										
 										int h2 = ruH2.getNum();
+										
 										if (h1 == h2)
 											continue;
+										
 										if (isHeapCoverableMax(CardHeap, coverNumber, h2)
 												&& fromHeaptoHeap(CardHeap, coverNumber, h1, h2, 1, mvlist)) {
+											
 											coverHeapCard(CardHeap, coverNumber, h1);
 											coverHeapCard(CardHeap, coverNumber, h2);
 
@@ -842,22 +867,30 @@ public class SolvableGameCardInitializer implements CardInitializer {
 									}
 								}
 
-							} else if (temp2 < 95) {
+							} else if (temp2 < 95) {//15%概率，移动一半能移动的牌
+								
 								ruH1.reSet();
 								l: for (int x = 1; x <= 6; x++) {
+									
 									int h1 = ruH1.getNum();
+									
 									ruH2.reSet();
-
-									if (CardHeap[h1].size() - coverNumber[h1] == 0)
+									
+									if (CardHeap[h1].size() - coverNumber[h1] == 1)//没牌可移，不移
 										continue;
 
 									for (int y = 1; y <= 6; y++) {
+										
 										int h2 = ruH2.getNum();
+										
 										if (h1 == h2)
 											continue;
+										
 										int num = (CardHeap[h1].size() - coverNumber[h1]) / 2;
-										if (num == 1)
+										
+										if (num == 1)//如果只有一张牌，就不移了
 											continue;
+										
 										if (fromHeaptoHeap(CardHeap, coverNumber, h1, h2, num, mvlist)) {
 											coverHeapCard(CardHeap, coverNumber, h1);
 											coverHeapCard(CardHeap, coverNumber, h2);
@@ -867,30 +900,37 @@ public class SolvableGameCardInitializer implements CardInitializer {
 									}
 								}
 							}
+							//5%概率什么都不做
 
-							temp = r.nextInt(100);
+							temp = r.nextInt(100);//随机下一次的行为
 						}
 
-						ruH1.reSet();
+						//随机抽取牌堆向发牌器给牌
+						
+						ruH1.reSet();//重置牌堆的抽取
 						for (int x = 1; x <= 6; x++) {
-							int from = ruH1.getNum();
+							
+							int from = ruH1.getNum();//随机选取牌堆给牌
 
-							if (CardHeap[from].size() - coverNumber[from] == 1)
+							if (CardHeap[from].size() - coverNumber[from] == 1)//检查是否有牌可移，没有就不移动
 								continue;
 
 							if (fromHeapToDealer(CardHeap, coverNumber, tempDealer, from, i, togiveNum, ret[1],
-									mvlist)) {
-								coverHeapCard(CardHeap, coverNumber, from);
+									mvlist)) {//检查是否能给牌
+								
+								coverHeapCard(CardHeap, coverNumber, from);//给完牌检查是否只剩一张，如果只剩一张就盖住
 
 								break;
 							}
 						}
+						
 					}
 
-					mvlist.add(new NextOperation());
+					mvlist.add(new NextOperation());//每移动完一次就NEXT一次
 				}
 			}
 
+			//做完之后建立发牌器，把临时的值传进来
 			ArrayList<Card> Dealer = new ArrayList<>();
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 3; j++) {
@@ -898,36 +938,48 @@ public class SolvableGameCardInitializer implements CardInitializer {
 				}
 			}
 
+			//整理牌堆，如果整理不成功，就返回失败
 			if (!organizeHeap(CardHeap, coverNumber, mvlist))
 				return null;
 
+			//否则就返回一个可完成的游戏
 			return new SolvableCardGame(CardHeap, Dealer, mvlist);
 		}
 
+		/**
+		 * 获取一个可解的游戏
+		 * @return 可解的游戏 
+		 */
 		public static SolvableCardGame getASolvableCardGame() {
-			SolvableCardGame ans = getASolvableCardGamePro();
-			while (ans == null)
+			
+			SolvableCardGame ans = getASolvableCardGamePro();//获取一个可完成的游戏
+			
+			while (ans == null)//如果获取不成功，就重新获取，一般来说两次之内能够获得一个可解的游戏
 				ans = getASolvableCardGamePro();
+			
 			Collections.reverse(ans.mvlist);
 
-			for (int i = 0; i < 7; i++)
+			for (int i = 0; i < 7; i++)//牌堆整理完之后和发牌的顺序相反，所以要反向
 				Collections.reverse(ans.CardHeap[i]);
 
-			return ans;
+			return ans;//返回一个真正必定可解的游戏
 		}
 
 	}
 
+	//先获取一个可解的游戏
 	private SolvableCardGame scg = SolvableCardGame.getASolvableCardGame();
 
+	//下一个应该给的发牌器的牌的索引
 	private int dealerIndex = 0;
 
+	//下一个应该给的牌堆的牌的全部索引
 	private int[] heapIndexes = new int[7];
 
 	@Override
 	public Card getCard(Components c) {
 
-		switch (c) {
+		switch (c) {//对于每个组件，分别发牌
 		case DEALER:
 			return scg.Dealer.get(dealerIndex++);
 		case CARD_HEAP_1:
@@ -947,6 +999,7 @@ public class SolvableGameCardInitializer implements CardInitializer {
 		default:
 			return null;
 		}
+		
 	}
 
 }
