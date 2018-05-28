@@ -243,7 +243,7 @@ public class CardHeapImpl implements CardHeap{
 
 	@Override
 	public ArrayList<String> getTopCard() {//获取顶部的牌
-		ArrayList<String> temp=new ArrayList<>();
+		ArrayList<String> temp=new ArrayList<>();//存放获取的牌序
 		
 		for(Card c:cardStack){
 			temp.add(c.toString());
@@ -253,8 +253,8 @@ public class CardHeapImpl implements CardHeap{
 	}
 
 	@Override
-	public ArrayList<String> getAllCard() {//获得全部牌
-		ArrayList<String> temp=new ArrayList<>();
+	public ArrayList<String> getAllCard() {//获得全部牌，包括为未开的牌
+		ArrayList<String> temp=new ArrayList<>();//存放获取的牌序
 		for(Card c:cardStack){
 			temp.add(c.toString());
 			
@@ -275,7 +275,7 @@ public class CardHeapImpl implements CardHeap{
 	}
 
 	@Override
-	public boolean undo() {
+	public boolean undo() {//撤销操作
 		if(snapshot.isEmpty())//如果快照为空则不可操作
 			return false;
 		
@@ -306,7 +306,7 @@ public class CardHeapImpl implements CardHeap{
 		if(snapshot.isEmpty())//如果快照为空则不可操作
 			return false;
 		
-		String last=snapshot.peekLast();
+		String last=snapshot.peekLast();//得到最原始的快照
 		//更新状态
 		cardStack.clear();
 		snapshot.clear();
