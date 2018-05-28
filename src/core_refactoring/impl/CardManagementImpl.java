@@ -238,7 +238,6 @@ public class CardManagementImpl implements CardManagement{
 		
 		if(needAnalyze){//如果需要分析
 			needAnalyze=false;//防止分析时造成递归
-			
 			lastMove="next";//把上次移动标记为本次移动的信息
 			tipsGetter.analyzerGame(this);//分析牌局
 			
@@ -272,8 +271,32 @@ public class CardManagementImpl implements CardManagement{
 			
 			map.get(op.from).undo();//调用具体组件
 			map.get(op.to).undo();//调用具体组件
-			pointCounter.undo();//调用具体组件
-			
+			pointCounter.undo();//调用具体组件			
+		}
+		
+		if(snapshot.isEmpty()){
+			if(needAnalyze){
+				needAnalyze=false;//防止分析时造成递归
+				
+				lastMove="";
+				tipsGetter.analyzerGame(this);//分析牌局	
+				
+				needAnalyze=true;//防止分析时造成递归	
+			}
+		}else if(needAnalyze){//如果需要分析
+			needAnalyze=false;//防止分析时造成递归
+			Operation_pair op2=snapshot.pop();
+			if(op2.o==Operation.next){//如果是调用的NEXT
+				lastMove="next";//把上次移动标记为本次移动的信息
+				tipsGetter.analyzerGame(this);//分析牌局
+				
+				needAnalyze=true;//防止分析时造成递归
+			}else{//如果调用的是MOVE	
+				lastMove=op2.from+" "+op2.to+" "+1;//把上次移动标记为本次移动的信息
+				tipsGetter.analyzerGame(this);//分析牌局			
+
+			}
+			needAnalyze=true;//防止分析时造成递归	
 		}
 		
 		return true;//返回撤销成功
