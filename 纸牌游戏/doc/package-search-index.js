@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"core_refactoring","h":"","u":""},{"l":"core_refactoring.impl","h":"","u":""},{"l":"core_refactoring.impl.easy","h":"","u":""},{"l":"core_refactoring.impl.hard","h":"","u":""},{"l":"core_refactoring.impl.master","h":"","u":""},{"l":"core_refactoring.util","h":"","u":""},{"l":"test","h":"","u":""}]
