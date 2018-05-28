@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="core_refactoring.impl.CardHeapImpl" x="348" y="551">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardHeap"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="thisc" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.CardInitializer"
+            endpointName="generate" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.CardInitializer"/>
+        <Communication destinationClassName="core_refactoring.Card"/>
+        <Communication destinationClassName="core_refactoring.Component"/>
+    </Class>
+    <Class name="core_refactoring.Mode" x="789" y="1066">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.MoveState" x="410" y="971">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.CardGameAnalyzer" x="2251" y="114">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.TimerImpl" x="2601" y="-107">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.Timer"/>
+    </Class>
+    <Class name="core_refactoring.util.RandomUniqueNumber" x="613" y="-391">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.Components" x="1192" y="1100">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.CardManagementImpl" x="1365" y="384">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardManagement"/>
+        <Association destinationClassName="core_refactoring.Box"
+            endpointName="box_1" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Box"
+            endpointName="box_3" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Box"
+            endpointName="box_2" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardHeap"
+            endpointName="cardHeap_2" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardHeap"
+            endpointName="cardHeap_1" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.PointCounter"
+            endpointName="pointCounter" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardHeap"
+            endpointName="cardHeap_6" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardHeap"
+            endpointName="cardHeap_5" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardHeap"
+            endpointName="cardHeap_4" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardHeap"
+            endpointName="cardHeap_3" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.CardGameAnalyzer"
+            endpointName="tipsGetter" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardHeap"
+            endpointName="cardHeap_7" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Dealer"
+            endpointName="dealer" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Box"
+            endpointName="box_4" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Component"
+            endpointName="map" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.CardGameAnalyzer"/>
+        <Communication destinationClassName="core_refactoring.PointCounter"/>
+        <Communication destinationClassName="core_refactoring.Component"/>
+        <Communication destinationClassName="core_refactoring.Dealer"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame"
+        x="2051" y="700">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame.Operation"
+            endpointName="mvlist" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="heapMap" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Card"
+            endpointName="Dealer" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.util.RandomUniqueNumber"/>
+        <Communication destinationClassName="core_refactoring.Card"/>
+    </Class>
+    <Class name="core_refactoring.CardHeap" x="467" y="100">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.Component"/>
+    </Class>
+    <Class name="core_refactoring.impl.PointCounterImpl" x="2527" y="348">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.PointCounter"/>
+        <Communication destinationClassName="core_refactoring.CardHeap"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame.NextOperation"
+        x="2822" y="678">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame.Operation"/>
+    </Class>
+    <Class name="core_refactoring.CardInitializer" x="1670" y="712">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.DealerImpl" x="700" y="587">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.Dealer"/>
+        <Association destinationClassName="core_refactoring.Mode"
+            endpointName="mode" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Card"
+            endpointName="cardQueue" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Card"
+            endpointName="cardQueueCache" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.CardInitializer"
+            endpointName="cardInitializer" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.CardInitializer"/>
+        <Communication destinationClassName="core_refactoring.Component"/>
+    </Class>
+    <Class name="core_refactoring.CardNumber" x="833" y="-216">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.Component" x="467" y="-217">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.CardType" x="1232" y="-119">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.CardGame" x="1915" y="-392">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="core_refactoring.impl.CardGameFactoryImpl"
+            endpointName="cardGameFactory" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.impl.CardGameFactoryImpl"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.easy.SimpleSingleStepCardGameAnalyzerImpl"
+        x="2257" y="1243">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardGameAnalyzer"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="map" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="boxmap" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.CardManagement"/>
+        <Communication destinationClassName="core_refactoring.Components"/>
+    </Class>
+    <Class name="core_refactoring.impl.CardManagementImpl.Operation"
+        x="1075" y="560">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.CardImpl" x="1014" y="-91">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.Card"/>
+        <Association destinationClassName="core_refactoring.CardNumber"
+            endpointName="CARDNUMBER" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.CardType"
+            endpointName="CARDTYPE" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.Card"/>
+        <Communication destinationClassName="core_refactoring.CardNumber"/>
+        <Communication destinationClassName="core_refactoring.CardType"/>
+    </Class>
+    <Class name="core_refactoring.Timer" x="2426" y="-106">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.BoxImpl" x="25" y="551">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.Box"/>
+        <Communication destinationClassName="core_refactoring.Card"/>
+        <Communication destinationClassName="core_refactoring.Component"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame.IndexAndSize"
+        x="1977" y="973">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.Difficulty" x="618" y="987">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.Box" x="142" y="96">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.Component"/>
+    </Class>
+    <Class name="core_refactoring.impl.master.SimpleCardInitializerImpl"
+        x="1626" y="895">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardInitializer"/>
+        <Communication destinationClassName="core_refactoring.impl.CardImpl"/>
+    </Class>
+    <Class name="core_refactoring.impl.CardGameImpl" x="1920" y="-162">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardGame"/>
+        <Association destinationClassName="core_refactoring.Timer"
+            endpointName="timer" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.CardGameAnalyzer"
+            endpointName="cardGameAnalyzer" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.CardManagement"
+            endpointName="cardGameManager" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.PointCounter"
+            endpointName="pointCounter" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.CardManagement"/>
+        <Communication destinationClassName="core_refactoring.CardGameAnalyzer"/>
+        <Communication destinationClassName="core_refactoring.PointCounter"/>
+        <Communication destinationClassName="core_refactoring.Timer"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame.MoveOperation"
+        x="2594" y="1120">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame.Operation"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="from" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="to" kind="Simple"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.easy.SingleStepNextCardAnalyzerInitializer"
+        x="1492" y="-374">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardInitializer"/>
+        <Association destinationClassName="core_refactoring.Card"
+            endpointName="initCards" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="map" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.CardManagement"
+            endpointName="cardGame" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.impl.easy.CardChecker"
+            endpointName="cardChecker" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.CardManagement"/>
+        <Communication destinationClassName="core_refactoring.util.RandomUniqueNumber"/>
+        <Communication destinationClassName="core_refactoring.Card"/>
+        <Communication destinationClassName="core_refactoring.Components"/>
+        <Communication destinationClassName="core_refactoring.impl.CardImpl"/>
+        <Communication destinationClassName="core_refactoring.impl.easy.CardChecker"/>
+    </Class>
+    <Class name="core_refactoring.CardGameFactory" x="2470" y="-265">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.hard.SolvableGameCardInitializer"
+        x="2026" y="501">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardInitializer"/>
+        <Association
+            destinationClassName="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame"
+            endpointName="scg" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.util.RandomUniqueNumber"/>
+        <Communication destinationClassName="core_refactoring.Card"/>
+        <Communication destinationClassName="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.hard.SolvableGameCardInitializer.SolvableCardGame.Operation"
+        x="2612" y="682">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.easy.CardChecker" x="939" y="-385">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="core_refactoring.util.RandomUniqueNumber"
+            endpointName="r" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.util.RandomUniqueNumber"/>
+        <Communication destinationClassName="core_refactoring.impl.CardImpl"/>
+    </Class>
+    <Class name="core_refactoring.CardManagement" x="1413" y="-183">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.PointCounter" x="2089" y="392">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="core_refactoring.impl.CardManagementImpl.Operation_pair"
+        x="1200" y="567">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="from" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="to" kind="Simple"/>
+        <Association
+            destinationClassName="core_refactoring.impl.CardManagementImpl.Operation"
+            endpointName="o" kind="Simple"/>
+    </Class>
+    <Class name="core_refactoring.Card" x="1047" y="103">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="core_refactoring.impl.SingleStepCardGameAnalyzerImpl"
+        x="1835" y="94">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardGameAnalyzer"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="map" kind="Simple"/>
+        <Association destinationClassName="core_refactoring.Components"
+            endpointName="boxmap" kind="Simple"/>
+        <Communication destinationClassName="core_refactoring.CardManagement"/>
+        <Communication destinationClassName="core_refactoring.Components"/>
+    </Class>
+    <Class name="core_refactoring.Dealer" x="824" y="129">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.Component"/>
+    </Class>
+    <Class name="core_refactoring.impl.CardGameFactoryImpl" x="2457" y="-333">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="core_refactoring.CardGameFactory"/>
+        <Communication destinationClassName="core_refactoring.impl.CardManagementImpl"/>
+        <Communication destinationClassName="core_refactoring.impl.easy.SingleStepNextCardAnalyzerInitializer"/>
+    </Class>
+</ClassDiagram>
